@@ -1,2 +1,7 @@
-<h1>EndUsers#show</h1>
-<p>Find me in app/views/end_users/show.html.erb</p>
+<%= @user.first_name %> <%= @user.last_name %><br>
+<%= @user.email %>
+
+<%= link_to "プロフィール編集", edit_public_end_user_path %>
+
+<%= link_to "退会", public_end_users_delete_verification_path %>
+
