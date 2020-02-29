@@ -19,7 +19,7 @@
       <ul class="nav navbar-nav navbar-right">
         <% if end_user_signed_in? %>
         <li class="">
-            <%= link_to "マイページ", "#", method: :delete, class: "glyphicon glyphicon-log-out logout" %>
+            <%= link_to "マイページ", public_end_users_path, class: "glyphicon glyphicon-log-out logout" %>
           </li>
           <li class="">
             <%= link_to "カート一覧", "#", method: :delete, class: "glyphicon glyphicon-log-out logout" %>

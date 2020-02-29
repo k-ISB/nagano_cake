@@ -1,2 +1,23 @@
-<h1>Public::EndUsers#edit</h1>
-<p>Find me in app/views/public/end_users/edit.html.erb</p>
+<% if @user.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger">
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %>というerror</li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="col-xs-3">
+  <h2>User info</h2>
+  <%= form_for(@user) do |f| %>
+
+    <div class="form-group has-icon">
+      <%= f.label :email, "email",  class: 'control-label'%>
+      <%= f.email_field :email, autofocus: true, class:"form-control", id:"inputEmail" %>
+      <span class="fa fa-user form-control-icon" aria-hidden="true"></span>
+    </div>
+    
+    <%= f.submit "update user", class:"btn btn-default" %>
+  <% end %>
+</div>
