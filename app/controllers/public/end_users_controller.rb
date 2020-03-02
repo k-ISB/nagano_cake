@@ -11,7 +11,7 @@ class Public::EndUsersController < ApplicationController
     @user = current_end_user
     if @user.update(end_user_params)
       flash[:success] = "メールアドレスを更新しました"
-      redirect_to public_end_users_path
+      redirect_to end_users_path
     else
       render :exit
     end
@@ -25,6 +25,6 @@ class Public::EndUsersController < ApplicationController
 
 
   def end_user_params
-    params.require(:user).permit(:first_name, :last_name, :email)
+    params.require(:end_user).permit(:first_name, :last_name, :email)
   end
 end
