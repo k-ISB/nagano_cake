@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
         when Admin
             admin_items_path
         when EndUser
-            public_end_users_path # ログイン後に遷移するpathを設定
+            end_users_path # ログイン後に遷移するpathを設定
         end
         
     end
