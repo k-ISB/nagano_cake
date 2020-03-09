@@ -22,17 +22,17 @@
             <%= link_to "マイページ", end_users_path, class: "glyphicon glyphicon-log-out logout" %>
           </li>
           <li class="">
-            <%= link_to "カート一覧", "#", method: :delete, class: "glyphicon glyphicon-log-out logout" %>
+            <%= link_to "カート一覧", "#", class: "glyphicon glyphicon-log-out logout" %>
           </li>
           <li class="">
             <%= link_to "logout", destroy_end_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out logout" %>
           </li>
         <% elsif admin_signed_in?%>
         <li class="">
-            <%= link_to "受注一覧", "#", method: :delete, class: "glyphicon glyphicon-log-out logout" %>
+            <%= link_to "受注一覧", "#", class: "glyphicon glyphicon-log-out logout" %>
           </li>
           <li class="">
-            <%= link_to "商品登録", "#", method: :delete, class: "glyphicon glyphicon-log-out logout" %>
+            <%= link_to "商品登録", new_admin_item_path, class: "glyphicon glyphicon-log-out logout" %>
           </li>
           <li class="">
             <%= link_to "logout", destroy_admin_session_path, method: :delete, class: "glyphicon glyphicon-log-out logout" %>
