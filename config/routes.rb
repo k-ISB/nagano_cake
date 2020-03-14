@@ -11,7 +11,9 @@ Rails.application.routes.draw do
 
   scope module: :public do
     get 'items/top'
-    get 'items/show'
+    resources :items, only: [:show]
+    resources :cart_items, only: [:index, :update, :create, :destroy]
+    delete 'cart_items/destroy_all'
     resources :end_users, only: [:edit, :update]
     get '/end_users', to: 'end_users#show', as: 'end_users'
     get 'end_users/delete_verification'

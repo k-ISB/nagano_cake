@@ -22,7 +22,7 @@
             <%= link_to "マイページ", end_users_path, class: "glyphicon glyphicon-log-out logout" %>
           </li>
           <li class="">
-            <%= link_to "カート一覧", "#", class: "glyphicon glyphicon-log-out logout" %>
+            <%= link_to "カート一覧", cart_items_path, class: "glyphicon glyphicon-log-out logout" %>
           </li>
           <li class="">
             <%= link_to "logout", destroy_end_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out logout" %>

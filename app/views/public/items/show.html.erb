@@ -1,2 +1,15 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+
+#カートに追加するボタン
+<%= form_for @cart_item do |f| %>
+    <div class="form-group has-icon">
+      <%= f.label :個数 %>
+      <%= f.number_field :amount, class:"form-control" %>
+      <span class="fa fa-building form-control-icon" aria-hidden="true"></span>
+    </div>
+    
+     
+        <%= f.hidden_field :item_id , value: @item.id %>
+      
+     
+    <%= f.submit "カートに追加する", class:"btn btn-primary btn-block btn-base-1 mt-20" %>
+  <% end %>
