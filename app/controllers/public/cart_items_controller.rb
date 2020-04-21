@@ -1,14 +1,22 @@
 class Public::CartItemsController < ApplicationController
   def index
-    @cart_items = CartItem.all
+    @cart_items = current_end_user.cart_items
+    @total = 0
+    @cart_items.each do |cart_item| 
+      tal = cart_item.item.non_taxed_price * cart_item.amount
+      @total += tal
+    end
   end
 
   def update
+    cart_item = CartItem.find(params[:id])
+    cart_item.update(cart_item_params)
+    redirect_to cart_items_path
   end
 
   def destroy
-    book = CartItem.find(params[:id])
-  	book.destroy
+    cart_item = CartItem.find(params[:id])
+  	cart_item.destroy
   end
 
   def destroy_all

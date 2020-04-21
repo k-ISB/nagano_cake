@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+
   root "public/items#top"
   # namespace :public do
   #   get 'items/top'
@@ -14,12 +15,16 @@ Rails.application.routes.draw do
     resources :items, only: [:show]
     resources :cart_items, only: [:index, :update, :create, :destroy]
     delete 'cart_items/destroy_all'
-    resources :end_users, only: [:edit, :update]
+    get 'orders/verification'
+    get 'orders/complete'
     get '/end_users', to: 'end_users#show', as: 'end_users'
     get 'end_users/delete_verification'
+    resources :end_users, only: [:edit, :update]
+    resources :orders, only: [:new, :create, :index, :show]
   end
 
   namespace :admin do
+    resources :orders, only: [:index, :update, :show]
     resources :items, only: [:index, :new, :create, :show, :exit, :update]
     resources :end_users, only: [:index, :show, :edit, :update]
   end

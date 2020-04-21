@@ -1,0 +1,47 @@
+<h1>受注詳細 </h1>
+
+購入者 : <%= @order.end_user.full_name %>
+
+配送先　：<%= @order.shipping_address %>
+
+支払い方法 : 
+<% if @order.payment_method == 0 %>
+  クレジット払い
+<% else %>
+  銀行振込
+<% end %>
+
+注文ステータス : 
+<% @ordered_item.each do |ordered_item| %>
+<%= form_for(ordered_item) do |f| %>
+  <%= f.select :production_status, [0, 1, 2, 3]%>
+  <%= f.submit %>
+  <% end %>
+<% end %>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>商品名</th>
+            <th>単価</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>制作ステータス</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @ordered_item.each do |ordered_item| %>
+            <tr>
+                <td><%= ordered_item.item.name %></td>
+                <td><%= ordered_item.item.non_taxed_price %></td>
+                <td><%= ordered_item.quantity %></td>
+                <td><%= ordered_item.item.non_taxed_price * ordered_item.quantity %></td>
+                <td><%= ordered_item.production_status %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
+商品合計 : <%= @total %>
+送料 : <%= @order.postage %>
+請求合計金額 : <%= @total + @order.postage %>

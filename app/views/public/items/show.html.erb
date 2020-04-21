@@ -1,5 +1,6 @@
 
-#カートに追加するボタン
+<%= @item.name %>
+<div>単価 : <%= @item.non_taxed_price %></div>
 <%= form_for @cart_item do |f| %>
     <div class="form-group has-icon">
       <%= f.label :個数 %>
@@ -7,9 +8,7 @@
       <span class="fa fa-building form-control-icon" aria-hidden="true"></span>
     </div>
     
-     
-        <%= f.hidden_field :item_id , value: @item.id %>
+      <%= f.hidden_field :item_id , value: @item.id %>
       
-     
-    <%= f.submit "カートに追加する", class:"btn btn-primary btn-block btn-base-1 mt-20" %>
+     <%= f.submit "カートに追加する", class:"btn btn-primary btn-block btn-base-1 mt-20" %>
   <% end %>

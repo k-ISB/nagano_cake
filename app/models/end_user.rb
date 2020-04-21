@@ -5,6 +5,12 @@ class EndUser < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :cart_items
+  has_many :orders
 
+  def full_name
+    first_name + last_name
+  end
   acts_as_paranoid #論理削除のやつ
+
+
 end

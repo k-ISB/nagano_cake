@@ -13,8 +13,13 @@
   <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
     <nav class="nav navbar-nav navbar-left">
+      <%= link_to root_path do %>
       <span class="app-title">Bookers</span>
+      <% end %>
     </nav>
+    <% if current_end_user %>
+      <div style="color:white">ようこそ<%= current_end_user.full_name %>さん</div>
+    <% end %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <% if end_user_signed_in? %>
@@ -29,7 +34,7 @@
           </li>
         <% elsif admin_signed_in?%>
         <li class="">
-            <%= link_to "受注一覧", "#", class: "glyphicon glyphicon-log-out logout" %>
+            <%= link_to "受注一覧", admin_orders_path, class: "glyphicon glyphicon-log-out logout" %>
           </li>
           <li class="">
             <%= link_to "商品登録", new_admin_item_path, class: "glyphicon glyphicon-log-out logout" %>
