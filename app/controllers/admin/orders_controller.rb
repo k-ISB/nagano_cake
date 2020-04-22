@@ -1,8 +1,8 @@
 class Admin::OrdersController < ApplicationController
   def update
-    @ordered_item = OrderedItem.find(params[:id])
-    ordered_item.update(ordered_item_params)
-    redirect_to admin_order_path(ordered_item)
+    order = Order.find(params[:id])
+    order.update(order_params)
+    redirect_to admin_order_path(order)
   end
 
   def index
@@ -18,14 +18,11 @@ class Admin::OrdersController < ApplicationController
       tol = ordered_item.item.non_taxed_price * ordered_item.quantity
       @total += tol 
     end
-    #送料
-
-    #合計
   end
 
   private
 
-  def ordered_item_params
-    params.require(:ordered_item).permit(:production_status)
+  def order_params
+    params.require(:order).permit(:status)
   end
 end

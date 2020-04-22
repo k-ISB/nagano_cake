@@ -1,23 +1,19 @@
 <h1>受注詳細 </h1>
 
-購入者 : <%= @order.end_user.full_name %>
+<div>購入者 : <%= @order.end_user.full_name %></div>
 
-配送先　：<%= @order.shipping_address %>
+<div>配送先 ：<%= @order.shipping_address %></div>
 
-支払い方法 : 
-<% if @order.payment_method == 0 %>
-  クレジット払い
-<% else %>
-  銀行振込
-<% end %>
+<div>支払い方法 : 
+<%= @order.payment_method_i18n %>
+</div>
 
 注文ステータス : 
-<% @ordered_item.each do |ordered_item| %>
-<%= form_for(ordered_item) do |f| %>
-  <%= f.select :production_status, [0, 1, 2, 3]%>
+<%= form_for @order, url: admin_order_path do |f| %>
+  <%= f.select :status, Order.statuses_i18n.invert %>  
   <%= f.submit %>
-  <% end %>
 <% end %>
+
 
 <table border="1">
     <thead>
@@ -36,12 +32,12 @@
                 <td><%= ordered_item.item.non_taxed_price %></td>
                 <td><%= ordered_item.quantity %></td>
                 <td><%= ordered_item.item.non_taxed_price * ordered_item.quantity %></td>
-                <td><%= ordered_item.production_status %></td>
+                <td><%= ordered_item.production_status_i18n %></td>
             </tr>
         <% end %>
     </tbody>
 </table>
 
-商品合計 : <%= @total %>
-送料 : <%= @order.postage %>
-請求合計金額 : <%= @total + @order.postage %>
+<div>商品合計 : <%= @total %></div>
+<div>送料 : <%= @order.postage %></div>
+<div>請求合計金額 : <%= @total + @order.postage %></div>

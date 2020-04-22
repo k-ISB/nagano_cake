@@ -12,11 +12,12 @@
         </thead>
         <tbody>
         <% @orders.each do |order| %>
+          <% %>
   　　　　　<tr>
             <td><%= order.created_at %></td>
             <td><%= order.end_user.first_name %></td>
-            <td><%= order.ordered_item.many %></td>
-            <td><%= order.status %></td>
+            <td><%= order.ordered_items.sum(:quantity) %></td>
+            
           </tr>
 　　　　　<% end %>
         </tbody>
