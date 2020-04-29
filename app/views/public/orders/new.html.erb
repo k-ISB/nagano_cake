@@ -21,13 +21,11 @@
       </div>
     <% end %>
 
-    
     <div class="form-group has-icon">
       <%= f.radio_button :address_select, 1 %>
       <%= f.label :登録済住所から選択 %><br>
-      <%= f.collection_select(:address_id, @addresses, :id, :direction) %>
+      <%= f.collection_select(:address_id, @addresses, :id, :address) %>
     </div>
-　　
     
     <h2><%= f.radio_button :address_select, 2 %>  新規住所登録</h2>
 

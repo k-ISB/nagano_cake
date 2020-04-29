@@ -6,6 +6,16 @@ class Public::OrdersController < ApplicationController
 
   def verification
     @cart_items = current_end_user.cart_items
+    @total = 0
+    @cart_items.each do |cart_item| 
+      tal = cart_item.item.non_taxed_price * cart_item.amount
+      @total += tal
+    end
+    if session[:user]["payment_method"] == "0"
+      @payment_method = "クレジット払い"
+    elsif session[:user]["payment_method"] == "1"
+      @payment_method = "現金払い"
+    end
   end
 
   def create

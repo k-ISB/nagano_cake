@@ -18,7 +18,10 @@ class Public::EndUsersController < ApplicationController
   end
 
   def delete_verification
-    user = current_end_user
+  end
+
+  def destroy
+    user = EndUser.find(params[:id])
     user.destroy
     redirect_to root_path
   end

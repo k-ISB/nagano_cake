@@ -14,10 +14,10 @@
         <% @orders.each do |order| %>
           <% %>
   　　　　　<tr>
-            <td><%= order.created_at %></td>
-            <td><%= order.end_user.first_name %></td>
+            <td><%= link_to order.created_at, admin_order_path(order) %></td>
+            <td><%= order.end_user.full_name %></td>
             <td><%= order.ordered_items.sum(:quantity) %></td>
-            
+            <td><%= order.status %></td>
           </tr>
 　　　　　<% end %>
         </tbody>

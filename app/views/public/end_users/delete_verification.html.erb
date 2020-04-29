@@ -1,2 +1,4 @@
-<h1>Public::EndUsers#delete_verification</h1>
-<p>Find me in app/views/public/end_users/delete_verification.html.erb</p>
+<div class="mt-4">本当に退会するんだなも...？</div>
+
+<%= button_to '退会しないんだなも', end_users_path, method: :get %>
+<%= button_to '退会するんだなも', end_user_path(current_end_user), method: :delete, confirm: "いいんだなも？" %>

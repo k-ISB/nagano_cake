@@ -1,14 +1,20 @@
 
 <%= @item.name %>
 <div>単価 : <%= @item.non_taxed_price %></div>
-<%= form_for @cart_item do |f| %>
+
+<%# カートに追加済みならフォームは表示しない %>
+<% if @duplication == 0 %>
+  <%= form_for @cart_item do |f| %>
     <div class="form-group has-icon">
       <%= f.label :個数 %>
-      <%= f.number_field :amount, class:"form-control" %>
+      <%= f.select :amount, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], class:"form-control" %>
       <span class="fa fa-building form-control-icon" aria-hidden="true"></span>
     </div>
     
-      <%= f.hidden_field :item_id , value: @item.id %>
-      
-     <%= f.submit "カートに追加する", class:"btn btn-primary btn-block btn-base-1 mt-20" %>
+    <%= f.hidden_field :item_id , value: @item.id %>
+  
+    <%= f.submit "カートに追加する", class:"btn btn-primary btn-block btn-base-1 mt-20" %>
   <% end %>
+<% else %>
+  <div>カートに追加済み</div>
+<% end %>

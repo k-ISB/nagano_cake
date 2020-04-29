@@ -32,7 +32,11 @@
                 <td><%= ordered_item.item.non_taxed_price %></td>
                 <td><%= ordered_item.quantity %></td>
                 <td><%= ordered_item.item.non_taxed_price * ordered_item.quantity %></td>
-                <td><%= ordered_item.production_status_i18n %></td>
+                <%= form_for ordered_item, url: admin_ordered_item_path do |f| %>
+                  <td><%= f.select :production_status, OrderedItem.production_statuses_i18n.invert %>
+                  <%= f.hidden_field :ordered_item_id, :value => ordered_item.id %>
+                  <%= f.submit 'へんこうする' %></td>
+                <% end %>
             </tr>
         <% end %>
     </tbody>
