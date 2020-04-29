@@ -68,4 +68,6 @@ gem 'jquery-rails'
 
 gem 'paranoia'
 
+gem 'enum_help'
+
 gem 'pry-rails'

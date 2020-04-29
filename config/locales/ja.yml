@@ -1,0 +1,20 @@
+ja:
+  enums:
+    ordered_item: 
+      production_status:
+        a: "着手不可"
+        b: "制作待ち"
+        c: "製作中"
+        d: "製作完了"
+    order:
+      status:
+        a: "入金待ち"
+        b: "入金確認"
+        c: "製作中"
+        d: "発送準備中"
+        e: "発送済み"
+      payment_method:
+        credit: "クレジット払い"
+        bunk: "銀行払い"
+
+    

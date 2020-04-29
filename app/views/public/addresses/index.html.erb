@@ -1,0 +1,38 @@
+<h1>配送先一覧 / 登録</h1>
+
+<%= form_for(@address) do |f| %>
+
+  <div class="form-group has-icon"><br>
+    電話番号(ハイフンなし) : <%= f.text_field :postal_code %>
+  </div>
+  <div class="form-group has-icon"><br>
+    住所 : <%= f.text_field :address %>
+  </div>
+  <div class="form-group has-icon"><br>
+    宛名 : <%= f.text_field :direction %>
+  </div>
+           
+  <%= f.submit "配送先を登録する", class:"btn btn-primary btn-block btn-base-1 mt-20" %>
+<% end %>
+
+<table class="table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>郵便番号<th>
+      <th>住所</th>
+      <th>宛名</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @addresses.each do |address| %>
+      <tr>
+        <td><%= address.postal_code %></td>
+        <td><%= address.address %></td>
+        <td><%= address.direction %></td>
+        <td><%= link_to "編集する", edit_address_path(address) %>
+          <%= link_to "削除する", address_path(address), method: :delete, confirm: "本当に削除しますか" %></td>
+      </th>
+      <% end %>
+</tbody>
+</table>

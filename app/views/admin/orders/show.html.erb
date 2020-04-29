@@ -1,0 +1,47 @@
+<h1>受注詳細 </h1>
+
+<div>購入者 : <%= @order.end_user.full_name %></div>
+
+<div>配送先 ：<%= @order.shipping_address %></div>
+
+<div>支払い方法 : 
+<%= @order.payment_method_i18n %>
+</div>
+
+注文ステータス : 
+<%= form_for @order, url: admin_order_path do |f| %>
+  <%= f.select :status, Order.statuses_i18n.invert %>  
+  <%= f.submit %>
+<% end %>
+
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>商品名</th>
+            <th>単価</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>制作ステータス</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @ordered_item.each do |ordered_item| %>
+            <tr>
+                <td><%= ordered_item.item.name %></td>
+                <td><%= ordered_item.item.non_taxed_price %></td>
+                <td><%= ordered_item.quantity %></td>
+                <td><%= ordered_item.item.non_taxed_price * ordered_item.quantity %></td>
+                <%= form_for ordered_item, url: admin_ordered_item_path do |f| %>
+                  <td><%= f.select :production_status, OrderedItem.production_statuses_i18n.invert %>
+                  <%= f.hidden_field :ordered_item_id, :value => ordered_item.id %>
+                  <%= f.submit 'へんこうする' %></td>
+                <% end %>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<div>商品合計 : <%= @total %></div>
+<div>送料 : <%= @order.postage %></div>
+<div>請求合計金額 : <%= @total + @order.postage %></div>
