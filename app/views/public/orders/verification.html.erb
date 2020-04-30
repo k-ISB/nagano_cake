@@ -23,23 +23,23 @@
 
 <table border="0">
     <tr>
-        <th>送料</th>
-        <td>500円</td>
+        <th>送料 : </th>
+        <td> 500円</td>
     </tr>
     <tr>
-        <th>商品合計</th>
-        <td><%= @total %>円</td>
+        <th>商品合計 : </th>
+        <td> <%= @total %>円</td>
     </tr>
     <tr>
-        <th>請求金額</th>
-        <td><%= @total＋500 %>円</td>
+        <th>請求金額 : </th>
+        <td> <%= @total+500 %>円</td>
     </tr>
 </table>
 
 <div>支払方法 : <%= @payment_method %></div>
-<div>お届け先 : <%= session[:user][:postal_code]
-                 + session[:user][:shipping_address]
-                 + session[:user][:direction] %></div>
+<div>お届け先 : <%= session[:user]["postal_code"] %>
+                 <%= session[:user]["shipping_address"] %>
+                 <%= session[:user]["direction"] %></div>
 
 <%= link_to "購入確定", orders_complete_path %>
 

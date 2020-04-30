@@ -12,9 +12,10 @@ Admin.create!(
  )
 
  Item.create!(
-     genre_id: 1
-     name: "cake"
-     description: "美味しいかもしれん"
-     non_taxed_price: 300
+     genre_id: 1,
+     name: "cake",
+     description: "美味しいかもしれん",
+     non_taxed_price: 300,
+     sales_status: 0
  )
  

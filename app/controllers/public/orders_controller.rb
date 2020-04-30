@@ -1,4 +1,6 @@
 class Public::OrdersController < ApplicationController
+  before_action :cart_item_any?, only: [:new, :verification]
+
   def new
     @addresses = Address.all
     @ordered = Order.all
@@ -11,9 +13,9 @@ class Public::OrdersController < ApplicationController
       tal = cart_item.item.non_taxed_price * cart_item.amount
       @total += tal
     end
-    if session[:user]["payment_method"] == "0"
+    if session[:user]["payment_method"] == "credit"
       @payment_method = "クレジット払い"
-    elsif session[:user]["payment_method"] == "1"
+    elsif session[:user]["payment_method"] == "bunk"
       @payment_method = "現金払い"
     end
   end
@@ -35,7 +37,7 @@ class Public::OrdersController < ApplicationController
       session[:user][:direction] = current_end_user.full_name
     elsif params[:address_select] == "1"
       session[:user][:postal_code] =  Address.find(params[:address_id]).postal_code
-      session[:user][:shipping_address] = Address.find(params[:address_id]).shipping_address
+      session[:user][:shipping_address] = Address.find(params[:address_id]).address
       session[:user][:direction] = Address.find(params[:address_id]).direction
     else 
       session[:user][:postal_code] =  params[:postal_code]
@@ -81,5 +83,11 @@ class Public::OrdersController < ApplicationController
                                   :postal_code, 
                                   :shipping_address, 
                                   :payment_method)
+  end
+
+  def cart_item_any?
+    if current_end_user.cart_items.empty?
+      redirect_to end_users_path
+    end
   end
 end
