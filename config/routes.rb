@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   #   get 'end_users/delete_verification'
   # end
 
+  devise_for :admins
+  devise_for :end_users
+  
   scope module: :public do
     get 'items/top'
     resources :items, only: [:show]
@@ -33,8 +36,6 @@ Rails.application.routes.draw do
     resources :ordered_items, only: [:update]
   end
 
-  devise_for :admins
-  devise_for :end_users
   resources :end_users, only: [:index, :show]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
