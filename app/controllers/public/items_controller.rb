@@ -1,6 +1,7 @@
 class Public::ItemsController < ApplicationController
   def top
-    @items = Item.all
+    @num = Order.where("DATE(created_at) = '#{Date.today}'").count
+    @items = Item.search(params[:search])
   end
 
   def show
