@@ -1,24 +1,9 @@
-# README
+#nagano_cakeとは
+-Ruby on Railsを使用して制作したECサイト
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#苦労した点
+-管理者側と利用者側でそれぞれに機能を実装した点
 
-Things you may want to cover:
+#デザインに関して
+-現在はRoRの機能実装までしか行っていないので、デザインに関してはこれから行っていきます
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
