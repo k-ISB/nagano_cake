@@ -23,6 +23,8 @@ test:
 production:
   <<: *default
   adapter: postgresql
-  database: postgresql-spherical-08634
-  encoding: unicode
-  pool: 5
+  database: da92ts7m89jgvh
+  port: 5432
+  username: afpzcxfwuxbfyn
+  password: 9a368ca9ba4520bb7e8e709a0d664cefbf48a7e039c580de285c8248b85bd95a
+  encoding: utf8
