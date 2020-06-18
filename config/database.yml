@@ -23,6 +23,6 @@ test:
 production:
   <<: *default
   adapter: postgresql
-  database: db/production.postgresql
+  database: postgresql-spherical-08634
   encoding: unicode
   pool: 5
