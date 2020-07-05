@@ -1,46 +1,75 @@
 <h1>購入品確認</h1>
 
-<table border="1">
-    <thead>
-        <tr>
-            <th>商品名</th>
-            <th>単価</th>
-            <th>数量</th>
-            <th>小計</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% @cart_items.each do |cart_item| %>
+
+<div class="row">
+  <div class="col-sm-9">
+    
+    <!--<div class="card-deck">
+    <% @cart_items.each do |cart_item| %>
+      <div class="card mb-3">
+        <%= attachment_image_tag cart_item.item, :image, format: 'jpeg', class: "bd-placeholder-img card-img-top", fallback: "ithigo.jpg" %>
+        <div class="card-body pb-2">
+          <h5 class="card-title"><%= cart_item.item.name %></h5>
+          <p class="card-text"><%= cart_item.item.non_taxed_price %>円</p>
+          <div>個数: <%= cart_item.amount %>点</div>
+        </div>
+      </div>
+    <% end %>
+    </div>-->
+    <% @cart_items.each do |cart_item| %>
+      <div class="cartitem-area clearfix border-bottom border-dark p-3">
+        <div class="cartitem-figure float-left" style="width:35%">
+          <%= attachment_image_tag cart_item.item, :image, format: 'jpeg', fallback: "ithigo.jpg", class: "img-fluid" %>
+        </div>
+        <div class="cartitem-description float-right" style="width:60%">
+          <h4 class="cartitem-name p-3">
+            <%= cart_item.item.name %>
+          </h4>
+          <table class="table">
             <tr>
-                <td><%= cart_item.item.name %></td>
-                <td><%= cart_item.item.non_taxed_price %></td>
-                <td><%= cart_item.amount %></td>
-                <td><%= cart_item.item.non_taxed_price * cart_item.amount %></td>
+              <th>単価</th>
+              <th>数量</th>
+              <th>小計</th>
             </tr>
-        <% end %>
-    </tbody>
-</table>
-
-<table border="0">
-    <tr>
-        <th>送料 : </th>
-        <td> 500円</td>
-    </tr>
-    <tr>
-        <th>商品合計 : </th>
-        <td> <%= @total %>円</td>
-    </tr>
-    <tr>
-        <th>請求金額 : </th>
-        <td> <%= @total+500 %>円</td>
-    </tr>
-</table>
-
-<div>支払方法 : <%= @payment_method %></div>
-<div>お届け先 : <%= session[:user]["postal_code"] %>
-                 <%= session[:user]["shipping_address"] %>
-                 <%= session[:user]["direction"] %></div>
-
-<%= link_to "購入確定", orders_complete_path %>
-
+            <tr>
+              <td><%= cart_item.item.non_taxed_price %></td>
+              <td><%= cart_item.amount %></td>
+              <td><%= cart_item.item.non_taxed_price * cart_item.amount %></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    <% end %>
+    <h4 class="rounded mt-3 mb-3 p-2" style="background-color:#ddd;">お届け先</h4>
+    <p>〒<%= session[:user]["postal_code"] %>
+    　<%= session[:user]["shipping_address"] %></p>
+    <p>宛名:<%= session[:user]["direction"] %></p>             
+  </div>
+  <div class="col-sm-3">
+    <div class="border border-secondary rounded bg-light p-3 mt-5">
+      <table class="w-100">
+        <tr>
+          <td>送料</td>
+          <td class="text-right">500円</td>
+        </tr>
+        <tr>
+          <td>商品合計</td>
+          <td class="text-right"><%= @total %>円</td>
+        </tr>
+        <tr>
+          <td>割引適用</td>
+          <td class="text-right">-0円</td>
+        </tr>
+        <tr>
+          <td>ご利用ポイント</td>
+          <td class="text-right">0p</td>
+        </tr>
+      </table>
+      <div class="border-top mt-3 pt-2 mb-1">支払方法<p class="text-right"><%= @payment_method %></p></div>
+      <div class="border-top mt-3 pt-2 mb-1">合計金額</div>
+      <h4 class="content-justify-end border-bottom pb-2 mb-4 text-danger">¥<%= @total+500 %></h4>
+      <%= link_to "購入確定", orders_complete_path, class: "btn btn-primary mt-3" %>
+    </div>
+  </div>
+</div>
 

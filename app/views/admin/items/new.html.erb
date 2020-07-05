@@ -1,27 +1,31 @@
 <h1>商品登録</h1>
+<div class="row">
+<div class="col-xs-9">
 <%= form_for @item, :url => {:action => :create} do |f| %>
     
     <div class="form-group has-icon">
-      <%= f.label :name %>
+      <%= f.label :name, "商品名" %>
       <%= f.text_field :name, class:"form-control" %>
-      <span class="fa fa-building form-control-icon" aria-hidden="true"></span>
     </div>
     <div class="form-group has-icon">
-      <%= f.label :genre_id %>
-      <%= f.select :genre_id, ["ジャンル名", 1], include_blank: "選択して下さい" %>
-      <span class="fa fa-building form-control-icon" aria-hidden="true"></span>
+      <%= f.label :image, "商品画像" %><br />
+      <%= f.attachment_field :image %>
     </div>
     <div class="form-group has-icon">
-      <%= f.label :non_taxed_price %>
+      <%= f.label :genre_id, "商品種別" %><br />
+      <%= f.select :genre_id, [["ケーキ", "1"], ["ジュース", "2"]], include_blank: "選択して下さい" %>
+    </div>
+    <div class="form-group has-icon">
+      <%= f.label :non_taxed_price, "値段(税抜き)" %>
       <%= f.text_field :non_taxed_price, class:"form-control" %>
-      <span class="fa fa-building form-control-icon" aria-hidden="true"></span>
     </div>
     <div class="form-group has-icon">
       <%= f.radio_button :sales_status, :true %>
-  　　 <%= f.label :sales_status, "有効", {value: :true, style: "display: inline-block;"} %>
-  　　 <%= f.radio_button :sales_status, :false %>
-  　　 <%= f.label :sales_status, "無効", {value: :false, style: "display: inline-block;"} %>
-      <span class="fa fa-building form-control-icon" aria-hidden="true"></span>
+       <%= f.label :sales_status, "有効", {value: :true, style: "display: inline-block;"} %>
+       <%= f.radio_button :sales_status, :false %>
+       <%= f.label :sales_status, "無効", {value: :false, style: "display: inline-block;"} %>
     </div>
-    <%= f.submit "create book", class:"btn btn-primary btn-block btn-base-1 mt-20" %>
+    <%= f.submit "この内容で登録する", class:"btn btn-primary btn-block btn-base-1 mt-20" %>
   <% end %>
+  </div>
+  </div>

@@ -4,20 +4,16 @@ class ApplicationController < ActionController::Base
     def after_sign_in_path_for(resource)
         case resource
         when Admin
-            admin_items_path
+            root_path
         when EndUser
             end_users_path # ログイン後に遷移するpathを設定
         end
     end
 
-    # def after_sign_out_path_for(resource) #ログアウト後に遷移するpathを設定
-    #     case resource
-    #     when Admin
-    #         new_admin_session_path
-    #     when EndUser
-    #         new_end_user_session_path
-    #     end
-    # end
+    
+    def after_sign_out_path_for(resource)
+        root_path # ログアウト後に遷移するpathを設定
+      end
 
     def configure_permitted_parameters
         devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, 

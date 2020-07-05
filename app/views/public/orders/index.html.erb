@@ -1,9 +1,23 @@
-<h1>Public::Orders#index</h1>
-<p>Find me in app/views/public/orders/index.html.erb</p>
+<h2>オーダー一覧</h2>
 
-オーダー一覧
+<table class="table">
+<tr>
+  <th>購入日</th>
+  <th>購入商品</th>
+  <th>商品単価</th>
+  <th>購入個数</th>
+  <th>購入金額</th>
+  <th>支払い方法</th>
+</tr>
 
-<% @orders.each do |order| %></br>
-  購入者id : <%= order.end_user_id %>
-  配送先住所 : <%= order.direction %>
+<% @orders.each do |order| %>
+  <tr>
+    <td><%= order.created_at %></td>
+    <td><%= order.item.name %></td>
+    <td><%= order.unit_price %></td>
+    <td><%= order.quantity %></td>
+    <td><%= order.quantity * order.unit_price %></td>
+    <td><%= order.order.payment_method_i18n %></td>
+  </tr>
 <% end %>
+</table>

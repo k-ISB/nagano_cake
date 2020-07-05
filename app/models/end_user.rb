@@ -6,6 +6,7 @@ class EndUser < ApplicationRecord
 
   has_many :cart_items
   has_many :orders
+  has_many :ordered_items, through: :orders
 
   def full_name
     first_name + last_name

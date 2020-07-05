@@ -1,4 +1,12 @@
 <h1>商品一覧</h1>
+<table class="table table-striped">
+<tr>
+  <th>商品名</th>
+  <th>商品単価</th>
+</tr>
 <% @items.each do |item| %>
-    <%= item.name %>
+  <tr>
+    <td><%= link_to item.name, admin_item_path(item) %></td>
+    <td><%= item.non_taxed_price %>
+  </tr>
 <% end %>

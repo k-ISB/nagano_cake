@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.5'
 
-gem 'therubyracer', platforms: :ruby
+gem 'mini_racer'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
@@ -69,11 +69,17 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 
-gem 'bootstrap-sass', '~> 3.3.6'
-gem 'jquery-rails'
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem "refile-mini_magick"
 
-gem 'paranoia'
+gem 'bootstrap', '~> 4.1.1'
 
-gem 'enum_help'
+gem 'jquery-rails' #JS
 
-gem 'pry-rails'
+gem 'paranoia' #論理削除
+
+gem 'enum_help' #enum
+
+gem 'pry-rails' #デバック
+
+gem 'rails-i18n'

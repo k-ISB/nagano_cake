@@ -16,5 +16,9 @@ ja:
       payment_method:
         credit: "クレジット払い"
         bunk: "銀行払い"
+    item:
+      sales_status:
+        on_sale: "販売中"
+        off_sale: "在庫切れ"
 
     

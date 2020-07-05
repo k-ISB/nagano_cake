@@ -2,10 +2,22 @@
   
   <% if params[:search] %>
     <h1>検索結果</h1>
-
+    <div class="row">
     <% @items.each do |item| %>
-      <%= link_to item.name, item_path(item) %>
+      <div class="col-sm-3">
+        <div class="card">
+          
+          <%= attachment_image_tag item, :image, format: 'jpeg', class: "bd-placeholder-img card-img-top", fallback: "ithigo.jpg", height: "180" %>
+          <div class="card-body">
+            <h5 class="card-title"><%= item.name %></h5>
+            <p class="card-text"><%= item.non_taxed_price %>円</p>
+            <%= link_to "この商品を見る", item_path(item.id), class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
     <% end %>
+  </div>
+    
   <% else %>
     <h1>管理者画面</h1>
     本日の注文件数 : <%= @num %> 件
@@ -14,8 +26,19 @@
 <% else %>
 
   <h1>商品一覧</h1>
-  <% @items.each do |item| %>
-    <%= link_to item.name, item_path(item.id) %>
-  <% end %>
-
+  <div class="row">
+    <% @items.each do |item| %>
+      <div class="col-sm-3">
+        <div class="card">
+          
+          <%= attachment_image_tag item, :image, format: 'jpeg', class: "bd-placeholder-img card-img-top", fallback: "ithigo.jpg", height: "180" %>
+          <div class="card-body">
+            <h5 class="card-title"><%= item.name %></h5>
+            <p class="card-text"><%= item.non_taxed_price %>円</p>
+            <%= link_to "この商品を見る", item_path(item.id), class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 <% end %>

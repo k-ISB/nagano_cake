@@ -1,4 +1,5 @@
-<h2>Sign up</h2>
+<div style="text-align:center">
+<h2 class="mb-4">新規ユーザー登録</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -23,8 +24,8 @@
       <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     </div>
   <% else %>
-      <div class="field">
-      名前           　　　
+      <b>名前(漢字)</b>
+      <div class="field mt-2">
       <%= f.label :first_name, "(姓)" %>
       <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
       
@@ -32,8 +33,8 @@
       <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
       </div>
 
-      <div class="field">
-      フリガナ
+      <b>名前(フリガナ)</b>
+      <div class="field mt-2">
       <%= f.label :kana_first_name, "(セイ)" %>
       <%= f.text_field :kana_first_name, autofocus: true, autocomplete: "first_name" %>
       
@@ -41,41 +42,42 @@
       <%= f.text_field :kana_last_name, autofocus: true, autocomplete: "last_name" %>
       </div>
 
-      <div class="field">
-      <%= f.label :email, "メールアドレス" %><br />
+      <div class="field mt-3">
+      <%= f.label :email, "メールアドレス", style:"font-weight:bold" %><br />
       <%= f.text_field :email, autofocus: true, autocomplete: "last_name" %>
       </div>
 
-      <div class="field">
-      <%= f.label :postal_code, "郵便番号(ハイフン無し)" %><br />
+      <div class="field mt-3">
+      <%= f.label :postal_code, "郵便番号(ハイフン無し)", style:"font-weight:bold" %><br />
       <%= f.text_field :postal_code, autofocus: true, autocomplete: "email" %>
       </div>
 
-      <div class="field">
-      <%= f.label :address, "住所" %><br />
+      <div class="field mt-3">
+      <%= f.label :address, "住所", style:"font-weight:bold" %><br />
       <%= f.text_field :address, autofocus: true, autocomplete: "email" %>
       </div>
 
-      <div class="field">
-      <%= f.label :telephone_number, "電話番号(ハイフン無し)" %><br />
+      <div class="field mt-3">
+      <%= f.label :telephone_number, "電話番号(ハイフン無し)", style:"font-weight:bold" %><br />
       <%= f.text_field :telephone_number, autofocus: true, autocomplete: "email" %>
       </div>
 
-    <div class="field">
-      <%= f.label :password, "パスワード(6文字以上)" %>
+    <div class="field mt-3">
+      <%= f.label :password, "パスワード(6文字以上)", style:"font-weight:bold" %><br />
       <%= f.password_field :password, autocomplete: "new-password" %>
     </div>
 
-    <div class="field">
-      <%= f.label :password_confirmation, "パスワード(確認用)" %><br />
+    <div class="field mt-3">
+      <%= f.label :password_confirmation, "パスワード(確認用)", style:"font-weight:bold" %><br />
       <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     </div>
    <% end %>
   
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <div class="actions mt-4">
+    <%= f.submit "この内容で登録", class: "btn btn-primary" %>
   </div>
 <% end %>
+</div>
 
-<%= render "devise/shared/links" %>
+

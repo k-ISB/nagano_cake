@@ -1,36 +1,41 @@
 <h1>マイページ</h1>
+<div class="row">
+<div class="col-10">
 
-<strong>登録情報</strong>
-<%= link_to "プロフィール編集", edit_end_user_path(@user) %><br>
 
-<table border="1">
+<table class="table table-striped table-bordered bg-light">
     <tbody>
         <tr>
-            <td>氏名</td>
+            <th width="20%">氏名</th>
             <td><%= @user.first_name %> <%= @user.last_name %></td>
         </tr>
         <tr>
-            <td>カナ</td>
+            <th>カナ</th>
             <td><%= @user.kana_first_name %> <%= @user.kana_last_name %></td>
         </tr>
         <tr>
-            <td>郵便番号</td>
+            <th>郵便番号</th>
             <td><%= @user.postal_code %></td>
         </tr>
         <tr>
-            <td>住所</td>
+            <th>住所</th>
             <td><%= @user.address %></td>
         </tr>
         <tr>
-            <td>電話番号</td>
+            <th>電話番号</th>
             <td><%= @user.telephone_number %></td>
         </tr>
         <tr>
-            <td>メールアドレス</td>
+            <th>メールアドレス</th>
             <td><%= @user.email %></td>
         </tr>
     </tbody>
 </table>
 
-配送先　<%= link_to "一覧を見る",  addresses_path %><br>
-注文履歴　<%= link_to "一覧を見る", orders_path %>
+<%= link_to "プロフィールを編集する", edit_end_user_path(@user), class: "btn btn-primary mb-4" %><br>
+
+<div class="border-top border-dark mb-3"></div>
+<%= link_to "▷  配送先一覧を確認",  addresses_path, class: "text-secondary" %><br>
+<%= link_to "▷  注文履歴を確認", orders_path, class: "text-secondary" %>
+</div>
+</div>

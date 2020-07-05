@@ -11,11 +11,49 @@ Admin.create!(
     password: 'password'
  )
 
- Item.create!(
-     genre_id: 1,
-     name: "cake",
-     description: "美味しいかもしれん",
-     non_taxed_price: 300,
-     sales_status: 0
+ Genre.create!(
+  [
+    {
+      name: "ケーキ",
+      status: true,
+    },
+    {
+      name: "ジュース",
+      status: true
+    }
+  ]
+)
+Item.create!(
+  [
+    {
+      genre_id: 1,
+      name: "ショートケーキ",
+      description: "とっても甘い！\n一つで十分。",
+      non_taxed_price: 300,
+      sales_status: 0,
+      
+    },
+    {
+      genre_id: 1,
+      name: "チョコケーキ",
+      description: "甘すぎる！\n体によくない。",
+      non_taxed_price: 300,
+      sales_status: 0,
+    },
+    {
+      genre_id: 1,
+      name: "チーズケーキ",
+      description: "美味しそうな色合い！\nあんまり味がしない.",
+      non_taxed_price: 300,
+      sales_status: 0,
+    },
+    {
+      genre_id: 1,
+      name: "誕生日ケーキ",
+      description: "バースデーパーティーにどうぞ！\nなんと食べれるんです。",
+      non_taxed_price: 300,
+      sales_status: 0,
+    }
+  ]
  )
  

@@ -6,41 +6,46 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-  <header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
-    <nav class="nav navbar-nav navbar-left">
-      <%= link_to root_path do %>
-      <span class="app-title">Bookers</span>
-      <% end %>
-    </nav>
-    <% if current_end_user %>
+  <header>
+  
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+      <%= link_to "秘密のケーキ屋さん", root_path, class: "navbar-brand" %>
+     
+    
+    <!--<% if current_end_user %>
       <div style="color:white">ようこそ<%= current_end_user.full_name %>さん</div>
-    <% end %>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
+    <% end %>-->
+    
+
+      <ul class="navbar-nav nav justify-content-end mr-sm-2">
         <% if end_user_signed_in? %>
-        <li class="">
-            <%= link_to "マイページ", end_users_path, class: "glyphicon glyphicon-log-out logout" %>
+        <li class="nav-item">
+            <%= link_to "マイページ", end_users_path, class: "nav-link fas fa-user" %>
           </li>
-          <li class="">
-            <%= link_to "カート一覧", cart_items_path, class: "glyphicon glyphicon-log-out logout" %>
+          <li class="nav-item">
+            <%= link_to "カート一覧", cart_items_path, class: "nav-link fas fa-shopping-cart" %>
           </li>
-          <li class="">
-            <%= link_to "logout", destroy_end_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out logout" %>
+          <li class="nav-item">
+            <%= link_to "ログアウト", destroy_end_user_session_path(current_end_user), method: :delete, class: "nav-link fas fa-sign-out-alt" %>
           </li>
         <% elsif admin_signed_in? %>
-        <li class="">
-            <%= link_to "受注一覧", admin_orders_path, class: "glyphicon glyphicon-log-out logout" %>
+          <li class="nav-item">
+            <%= link_to "商品一覧", admin_items_path, class: "nav-link glyphicon glyphicon-log-out logout" %>
           </li>
-          <li class="">
-            <%= link_to "商品登録", new_admin_item_path, class: "glyphicon glyphicon-log-out logout" %>
+          <li class="nav-item">
+            <%= link_to "受注一覧", admin_orders_path, class: "nav-link glyphicon glyphicon-log-out logout" %>
           </li>
-          <li class="">
-            <%= link_to "logout", destroy_admin_session_path, method: :delete, class: "glyphicon glyphicon-log-out logout" %>
+          <li class="nav-item">
+            <%= link_to "商品登録", new_admin_item_path, class: "nav-link glyphicon glyphicon-log-out logout" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link fas fa-sign-out-alt" %>
           </li>
           <div id="nav-search">
             <%= form_tag root_path, :method => 'get' do %>
@@ -51,18 +56,20 @@
             <% end %>
           </div>
         <% else %>
-          <li class="">
-            <%= link_to "sign up", new_end_user_registration_path, class: "glyphicon glyphicon-edit sign_up" %>
+          <li class="nav-item">
+            <%= link_to "ログイン", new_end_user_session_path, class: "nav-link fas fa-sign-in-alt" %>
           </li>
-          <li class="">
-            <%= link_to "login", new_end_user_session_path, class: "glyphicon glyphicon-log-in sign_in" %>
+          <li class="nav-item">
+            <%= link_to "新規登録", new_end_user_registration_path, class: "nav-link fas fa-sign-out-alt" %>
           </li>
         <% end %>
       </ul>
+      </div>
     </nav>
-  </div>
+  
 </header>
   <div class="body">
+  <div class="container">
     <%= yield %>
   </div>
   </body>

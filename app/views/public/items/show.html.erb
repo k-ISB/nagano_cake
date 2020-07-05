@@ -1,22 +1,31 @@
 
-<%= @item.name %>
-<div>単価 : <%= @item.non_taxed_price %></div>
+<h2 class="pb-2 mb-4"><%= @item.name %></h2>
 
-<%# カートに追加済みならフォームは表示しない %>
-<% if current_end_user %>
+<div class="row">
+  <div class="col-6">
+    <%= attachment_image_tag @item, :image, format: 'jpeg', fallback: "ithigo.jpg", style: "max-width: 100%"%>
+  </div>
+  <div class="col-6">
+    <h5 class="mb-3">商品説明</h5>
+    <div class="item-description mb-5">
+      <%= @item.description %>
+    </div>
+    <% if current_end_user %>
   <% if @duplication == 0 %>
     <%= form_for @cart_item do |f| %>
       <div class="form-group has-icon">
         <%= f.label :個数 %>
         <%= f.select :amount, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], class:"form-control" %>
-        <span class="fa fa-building form-control-icon" aria-hidden="true"></span>
       </div>
       
       <%= f.hidden_field :item_id , value: @item.id %>
     
-      <%= f.submit "カートに追加する", class:"btn btn-primary btn-block btn-base-1 mt-20" %>
+      <%= f.submit "カートに追加する", class:"btn btn-primary btn-block btn-base-1" %>
     <% end %>
   <% else %>
     <div>カートに追加済み</div>
   <% end %>
 <% end %>
+    
+  </div>
+</div>
