@@ -36,13 +36,13 @@
           </li>
         <% elsif admin_signed_in? %>
           <li class="nav-item">
-            <%= link_to "商品一覧", admin_items_path, class: "nav-link glyphicon glyphicon-log-out logout" %>
+            <%= link_to "商品一覧", admin_items_path, class: "nav-link fas fa-cookie" %>
           </li>
           <li class="nav-item">
-            <%= link_to "受注一覧", admin_orders_path, class: "nav-link glyphicon glyphicon-log-out logout" %>
+            <%= link_to "受注一覧", admin_orders_path, class: "nav-link fas fas-folder-open" %>
           </li>
           <li class="nav-item">
-            <%= link_to "商品登録", new_admin_item_path, class: "nav-link glyphicon glyphicon-log-out logout" %>
+            <%= link_to "商品登録", new_admin_item_path, class: "nav-link fas" %>
           </li>
           <li class="nav-item">
             <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link fas fa-sign-out-alt" %>
@@ -60,7 +60,7 @@
             <%= link_to "ログイン", new_end_user_session_path, class: "nav-link fas fa-sign-in-alt" %>
           </li>
           <li class="nav-item">
-            <%= link_to "新規登録", new_end_user_registration_path, class: "nav-link fas fa-sign-out-alt" %>
+            <%= link_to "新規登録", new_end_user_registration_path, class: "nav-link fas fa-user-plus" %>
           </li>
         <% end %>
       </ul>

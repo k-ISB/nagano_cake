@@ -9,7 +9,7 @@ class Admin::ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    if @item.update(item_params)
+    if @item.save
       #flash[:success] = "メールアドレスを更新しました"
       redirect_to admin_items_path
     else
@@ -34,6 +34,6 @@ class Admin::ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :genre_id, :non_taxed_price, :sales_status, :image)
+    params.require(:item).permit(:name, :genre_id, :non_taxed_price, :sales_status, :image, :description)
   end
 end

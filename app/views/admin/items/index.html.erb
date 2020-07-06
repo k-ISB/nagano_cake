@@ -1,12 +1,14 @@
 <h1>商品一覧</h1>
-<table class="table table-striped">
+<table class="table table-striped bg-light">
 <tr>
   <th>商品名</th>
   <th>商品単価</th>
+  <th>販売ステータス</th>
 </tr>
 <% @items.each do |item| %>
   <tr>
     <td><%= link_to item.name, admin_item_path(item) %></td>
     <td><%= item.non_taxed_price %>
+    <td><%= item.sales_status_i18n %></td>
   </tr>
 <% end %>

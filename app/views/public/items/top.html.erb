@@ -4,8 +4,8 @@
     <h1>検索結果</h1>
     <div class="row">
     <% @items.each do |item| %>
-      <div class="col-sm-3">
-        <div class="card">
+      <div class="col-xs-3">
+        <div class="card mb-3">
           
           <%= attachment_image_tag item, :image, format: 'jpeg', class: "bd-placeholder-img card-img-top", fallback: "ithigo.jpg", height: "180" %>
           <div class="card-body">
@@ -29,7 +29,7 @@
   <div class="row">
     <% @items.each do |item| %>
       <div class="col-sm-3">
-        <div class="card">
+        <div class="card mb-3">
           
           <%= attachment_image_tag item, :image, format: 'jpeg', class: "bd-placeholder-img card-img-top", fallback: "ithigo.jpg", height: "180" %>
           <div class="card-body">
