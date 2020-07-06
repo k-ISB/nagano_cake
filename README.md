@@ -1,3 +1,5 @@
+https://nagano-cakes.herokuapp.com/
+
 # nagano_cakeとは
 
 - Ruby on Railsを使用して制作したECサイト
