@@ -28,4 +28,15 @@ h1{
  .hidden{
      display: none;
  }
+ .main-img{
+    margin: 0 calc(50% - 50vw);
+    width: 100vw;
+    position: relative;
+    top: -40px;
+    height: 300px;
+    // background-color: red;
+    background: linear-gradient(135deg, rgba(230, 230, 230, .6),rgba(255, 240, 240, .8)), url("top-img.jpg"); ;
+    background-size: cover;
+    background-position: center;
+ }
  
