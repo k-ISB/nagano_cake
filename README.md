@@ -1,4 +1,3 @@
-サイトurl
 https://nagano-cakes.herokuapp.com/
 
 # nagano_cakeとは
